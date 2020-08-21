@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>springcloud2020</artifactId>
+    <groupId>com.symphony.springcloud</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>cloud-gateway-gateway9527</artifactId>
+
+
+  <dependencies>
+    <!--使用gateway需要注掉web依赖，否则无法启动-->
+    <!--使用actuator需要注掉web依赖，否则无法启动-->
+
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+
+    <!--引入工具模块，用于汇总系统中重复的部分，做工程重构-->
+    <dependency>
+      <groupId>com.symphony.springcloud</groupId>
+      <artifactId>cloud-api-commons</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!--添加Eureka client客户端依赖-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+      <version>2.2.3.RELEASE</version>
+    </dependency>
+
+    <!--添加gateway网关-->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-gateway</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>

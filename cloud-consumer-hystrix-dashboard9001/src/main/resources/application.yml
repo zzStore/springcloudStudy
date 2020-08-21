@@ -1,0 +1,27 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: cloud-consumer-hystrix-dashboard
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/springcloud_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+
+#MyBatis相关自定义配置
+mybatis:
+  mapperLocations: classpath:mapper/*.xml #mapper.xml所在位置
+  type-aliases-package: com.symphony.springcloud.entities #所有Entity别名类所在包
+
+eureka:
+  client:
+    #表示是否将自己注册进EurekaServer，默认为true
+    register-with-eureka: true
+    #是否从EurekaServer抓取已有的注册信息，默认true。单点无所谓，集群必须设置为true才能配合Ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+#      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/

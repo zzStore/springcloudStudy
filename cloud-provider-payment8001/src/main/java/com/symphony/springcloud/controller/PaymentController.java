@@ -4,6 +4,7 @@ import com.symphony.springcloud.entities.CommonResult;
 import com.symphony.springcloud.entities.Payment;
 import com.symphony.springcloud.service.PaymentService;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -66,5 +67,22 @@ public class PaymentController {
       log.info(instance.getServiceId() + "\t" + instance.getHost() + "\t" + instance.getUri());
     }
     return this.discoveryClient;
+  }
+
+  //调用负载均衡机制查看端口号
+  @GetMapping(value = "/payment/lb")
+  public String getPaymentLB(){
+    return serverPort;
+  }
+
+  //测试服务超时控制
+  @GetMapping(value = "/payment/feign/timeout")
+  public String paymentFeignTimeout(){
+    try {
+      TimeUnit.SECONDS.sleep(3);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    return serverPort;
   }
 }
